@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Rat_cat</title>
+</head>
+<body>
+<script>
+    class Rat{
+        constructor(name,weight,speed) {
+            this.name = name;
+            this.weight = weight;
+            this.speed = speed;
+            this.living = true;
+            this.speak = "";
+        }
+        speaking(str){
+            return this.speak+=str;
+        }
+    }
+    class Cat{
+        constructor(name,weight,maxSpeed) {
+            this.name = name;
+            this.weight = weight;
+            this.speed = maxSpeed;
+            this.speak = "";
+            this.catchMise = Rat;
+
+        }
+        speaking(str){
+            return this.speak +=str;
+        };
+        catch(Rat){
+            if(this.speed>Rat.speed){
+                alert(this.name + " bat duoc " + Rat.name);
+                return true;
+            }
+            else alert(this.name + " khong bat duoc " + Rat.name);
+            return false;
+        }
+        eatRat(Rat){
+                this.weight += Rat.weight;
+        }
+    }
+    let mise = new Rat("mise",2,20);
+    let cat = new Cat("cat",5,50);
+    mise.speaking("chit chit");
+    cat.speaking("meo meo");
+    cat.catch(mise);
+    cat.eatRat(mise);
+    console.log(cat.weight);
+</script>
+</body>
+</html>
